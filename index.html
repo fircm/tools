@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Fircm的主页</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="html.css">
+</head>
+<body>
+<nav id="top">
+    <ul>
+        <li><img src="https://fircm.github.io/main/LOGO.png" alt="请刷新"></li>
+        <li><a class="img" href="https://fircm.github.io/main/">主页</a></li>
+        <li><a href="https://fircm.github.io/memory">回忆录</a></li>
+        <li><a href="https://fircm.github.io/tools">小工具</a></li>
+    </ul>
+</nav>
+<p class="nav">Fircm也是一个喜欢编程的人，现在请允许我放一些小工具</p>
+<p>欢迎大家使用！</p>
+<p>以下是作者的第一个工具：（懒得排版）</p>
+<p><h2>1-6的随机数</h2></p>
+<p><button id="get">获取数字</button>
+<h4 id="number"></h4></p>
+</body>
+</html>
+<script>
+    let topNav = document.getElementById('top');
+    let opa = 1;
+    window.addEventListener('scroll', function(){
+        if (window.scrollY === 0) {
+            let count1 = setInterval(function(){
+                opa += 0.02;
+                topNav.style.opacity = opa;
+                if (opa >= 1) {
+                    clearInterval(count1);
+                }
+            }, 10);
+        }else{
+            let count2 = setInterval(function(){
+                opa -= 0.02;
+                topNav.style.opacity = opa;
+                if (opa <= 0.02) {
+                    clearInterval(count2);
+                }
+            }, 10);
+        }
+    })
+
+
+    let number = document.getElementById("number");
+    let get = document.getElementById("get");
+    let times = 0;
+    get.addEventListener('click', function(){
+        random = setInterval(function(){
+            number.textContent = Math.floor(Math.random() * 6) + 1;
+            times++;
+            if(times>9){clearInterval(random)};
+        }, 100)
+    };
+</script>
