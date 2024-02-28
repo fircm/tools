@@ -54,7 +54,10 @@
         random = setInterval(function(){
             number.textContent = Math.floor(Math.random() * 6) + 1;
             times++;
-            if(times>9){clearInterval(random)};
-        }, 100);
+            if(times>19){
+                times = 0;
+                clearInterval(random);
+            };
+        }, 50);
     });
 </script>
