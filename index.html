@@ -15,14 +15,27 @@
         <li><a href="https://fircm.github.io/tools">小工具</a></li>
     </ul>
 </nav>
+<div class="guide">
+    <a href="#1st">·1-6的随机数</a>
+    <a href="#2nd">·生成条码</a>
+    <a href="#3rd">·生成二维码</a>
+    <a href="#"># 更多……</a>
+</div>
 <p class="nav">Fircm也是一个喜欢编程的人，现在请允许我放一些小工具</p>
 <p>欢迎大家使用！</p>
-<p>以下是作者的第一个工具：（懒得排版）</p>
-<p><h2>1-6的随机数</h2></p>
-<p><button id="get">获取数字</button>
-<h4 id="number"></h4></p>
-</body>
-</html>
+<p>以下是作者的所有工具：（懒得排版）</p>
+<h2 id="1st">1st:</h2><h3>1-6的随机数</h3>
+<button id="get">获取数字</button><span id="number"></span>
+<h2 id="2nd">2nd:</h2><h3>生成条码</h3>
+<form id="tiaoma"><label for="input1">输入需要转译的文本：</label>
+    <input type="text" id="input1" name="input1">
+    <input type="submit" value="获取"></form>
+<div id="bar"></div>
+<h2 id="3rd">3rd:</h2><h3>生成二维码</h3>
+<form id="erweima"><label for="input2">输入需要转译的文本：</label>
+    <input type="text" id="input2" name="input1">
+    <input type="submit" value="获取"></form>
+<div id="qr"></div>
 <script>
     let topNav = document.getElementById('top');
     let opa = 1;
@@ -46,18 +59,45 @@
         }
     })
 
-
     let number = document.getElementById("number");
     let get = document.getElementById("get");
     let times = 0;
     get.addEventListener('click', function(){
         random = setInterval(function(){
+            get.disabled = true;
             number.textContent = Math.floor(Math.random() * 6) + 1;
             times++;
             if(times>19){
                 times = 0;
+                get.disabled = false;
                 clearInterval(random);
             };
         }, 50);
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@latest"></script>
+<script>
+    let form = document.getElementById('tiaoma');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        JsBarcode("#bar", document.getElementById('input1').value, {
+            format: "EAN13",
+            width: 200,
+            height: 50,
+            displayValue: true
+        })
+    })
+
+    let qrcode = new QRCode(document.getElementById("qrcode"), {
+        text: "https://example.com",
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+</script>
+</body>
+</html>
