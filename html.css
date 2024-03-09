@@ -1,7 +1,7 @@
 @font-face{
-    font-family: '方正粗黑宋简体';
-    src: 'https://fircm.github.io/main/方正粗黑宋简体.ttf';
-    font-weight: normal;
+font-family: '方正粗黑宋简体';
+src: 'https://fircm.github.io/main/方正粗黑宋简体.ttf';
+font-weight: normal;
 }
 
 body{
@@ -80,4 +80,46 @@ button:active{
 
 iframe{
     border: 1.5px solid cornflowerblue;
+}
+
+h2{
+    color: cornflowerblue;
+}
+#number{
+    position: absolute;
+    left: 200px;
+    font-size: 150%;
+}
+
+.guide {
+    height: 15%;
+    width: 150px;
+    position: fixed;
+    top: 40%;
+    right: 0;
+    background-color: #333;
+    padding-top: 20px;
+}
+
+.guide a {
+    padding: 5px 15px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+}
+
+.guide a:hover{
+    background-color: #555;
+}
+.guide a:active{
+    background-color: #333;
+}
+
+#input1{
+    width: 40%;
+}
+
+#input2{
+    width: 40%;
 }
